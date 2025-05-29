@@ -14,10 +14,13 @@ import {
   Calendar,
   CheckCircle,
   Gamepad,
+  Github,
+  X,
 } from "lucide-react";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("main");
+  const [showVideo, setShowVideo] = useState(false);
 
   const teamMembers = [
     {
@@ -102,7 +105,7 @@ function App() {
       {/* Navigation */}
       <nav className="p-6 flex justify-between items-center">
         <h1 className="text-3xl font-bold">Avarat</h1>
-        <div className="space-x-4">
+        <div className="space-x-4 flex items-center">
           <button
             onClick={() => setCurrentPage("main")}
             className={`px-4 py-2 rounded-full transition ${
@@ -123,6 +126,15 @@ function App() {
           >
             Process
           </button>
+          <a
+            href="https://gits-15.sys.kth.se/emhanse/DH2650-Avarat.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition flex items-center space-x-2"
+          >
+            <Github className="w-4 h-4" />
+            <span>GitHub</span>
+          </a>
         </div>
       </nav>
 
@@ -141,9 +153,12 @@ function App() {
             environment and overcome obstacles.
           </p>
           <div className="flex justify-center space-x-4">
-            <button className="bg-gradient-to-r from-blue-500 to-red-500 hover:from-blue-600 hover:to-red-600 px-8 py-4 rounded-full text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300">
+            <button
+              onClick={() => setShowVideo(true)}
+              className="bg-gradient-to-r from-blue-500 to-red-500 hover:from-blue-600 hover:to-red-600 px-8 py-4 rounded-full text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300"
+            >
               <Play className="inline w-6 h-6 mr-2" />
-              Play Demo
+              Game Demo
             </button>
             <button
               onClick={() => setCurrentPage("process")}
@@ -256,6 +271,40 @@ function App() {
       <footer className="py-8 text-center text-gray-400 border-t border-white/20">
         <p>© 2025 DH2650-Avarat Team. All rights reserved.</p>
       </footer>
+
+      {/* Video Modal */}
+      {showVideo && (
+        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-hidden">
+            <div className="flex justify-between items-center p-4 border-b">
+              <h3 className="text-xl font-bold text-gray-800">
+                Avarat - Game Demo
+              </h3>
+              <button
+                onClick={() => setShowVideo(false)}
+                className="text-gray-500 hover:text-gray-700 p-1"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            <div className="p-4">
+              <video
+                controls
+                autoPlay
+                className="w-full h-auto max-h-[70vh]"
+                poster="/public/VideoDemo/thumbnail.jpg"
+              >
+                <source src="/VideoDemo.mp4" type="video/mp4" />
+                <source
+                  src="/public/VideoDemo/game-demo.webm"
+                  type="video/webm"
+                />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -264,7 +313,7 @@ function App() {
       {/* Navigation */}
       <nav className="p-6 flex justify-between items-center">
         <h1 className="text-3xl font-bold">Avarat</h1>
-        <div className="space-x-4">
+        <div className="space-x-4 flex items-center">
           <button
             onClick={() => setCurrentPage("main")}
             className={`px-4 py-2 rounded-full transition ${
@@ -285,6 +334,15 @@ function App() {
           >
             Process
           </button>
+          <a
+            href="https://gits-15.sys.kth.se/emhanse/DH2650-Avarat.git"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition flex items-center space-x-2"
+          >
+            <Github className="w-4 h-4" />
+            <span>GitHub</span>
+          </a>
         </div>
       </nav>
 
